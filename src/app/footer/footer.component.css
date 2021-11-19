@@ -1,0 +1,15 @@
+h3 {
+    background-color: rgb(35, 43, 153);
+    padding: 05px;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+  }
