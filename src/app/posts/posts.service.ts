@@ -144,4 +144,14 @@ private refreshPosts(post: any) {
    this.getPosts(10, 1);
   }
 }
+
+/////
+// likePost(id) {
+//   const postData = { id: id };
+//         this.postSocketService.emitUpdatePostSocket(postData);
+//         return this.http.put(BACKEND_URL + '/like/', postData).subscribe(
+//     res => res
+//   );
+// }
+/////
 }
