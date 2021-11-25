@@ -1,6 +1,13 @@
 <mat-toolbar color="primary">
   <span>
-    <a routerLink="/">MyMessages</a>
+    <ul>
+      <li>
+    <a routerLink="/" *ngIf="!userIsAuthenticated">MyMessages</a>
+    </li>
+    <li>
+    <a routerLink="/" *ngIf="userIsAuthenticated">Dashboard</a> 
+    </li>
+  </ul>
   </span>
   <span class="spacer"></span>
   <ul>

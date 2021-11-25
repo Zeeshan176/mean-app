@@ -1,4 +1,7 @@
 <mat-card>
+  <mat-card-title class="log-col">
+    <h3>Log in to your account</h3>
+ </mat-card-title>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>

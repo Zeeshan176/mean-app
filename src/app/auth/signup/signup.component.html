@@ -1,4 +1,7 @@
 <mat-card>
+  <mat-card-title class="sup-col">
+    <h3>Signup your account</h3>
+ </mat-card-title>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
     <!-- <mat-form-field>
