@@ -12,7 +12,13 @@ mongoose
   .connect(
     "mongodb+srv://zeeshan:" +
       process.env.MONGO_ATLAS_PW +
-      "@cluster0.31cvj.mongodb.net/node-angular"
+      "@cluster0.31cvj.mongodb.net/node-angular", 
+      {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true,
+      }
   )
   .then(() => {
     console.log("Connected to database!");

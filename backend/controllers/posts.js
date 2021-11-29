@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const user = require("../models/user");
 
 exports.createPost = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
@@ -113,3 +114,122 @@ exports.deletePost = (req, res, next) => {
       });
     });
 };
+/////
+// exports.likePost = (req,res)=>{
+//   if (!req.body.id) {
+//       res.json({ success: false, message: 'No id was provided'});
+//   } else {
+//       Post.findOne({ _id: req.body.id}, (err, post) => {
+//         if (err) {
+//           res.json({ success: false, message: 'Invalid post id'});
+//         } else {
+//           if (!post) {
+//             res.json({ success: false, message: 'That post was not found.'});
+//           } else {
+//             user.findOne({ _id: req.fetchedPosts.userId}, (err, user) => {
+//               if (err) {
+//                 res.json({ success: false, message: 'Something went wrong.'});
+//               } else {
+//                 if (!user) {
+//                   res.json({ success: false, message: 'Could not authenticate user'});
+//                 } else {
+//                   if (user.userId === post.createdPost) {
+//                     res.json({ success: false, message: 'Cannot like your own post.'});
+//                   } else {
+//                     if (post.likedBy.includes(user.userId)) {
+//                       res.json({ success: false, message: 'You already liked this post,'});
+//                     } else {
+//                       if (post.dislikedBy.includes(user.userId)) {
+//                         post.dislikes--;
+//                         const arrayIndex = post.dislikedBy.indexOf(user.userId);
+//                         post.dislikedBy.splice(arrayIndex, 1);
+//                         post.likes++;
+//                         post.likedBy.push(user.userId);
+//                         post.save((err) => {
+//                           if (err) {
+//                             res.json({ success: false, message: 'Something went wrong.'});
+//                           } else {
+//                             res.json({success: true, message: 'Post liked.'});
+//                           }
+//                         });
+//                       } else {
+//                         post.likes++;
+//                         post.likedBy.push(user.userId);
+//                         post.save((err) => {
+//                           if (err) {
+//                             res.json({ success: false, message: 'Something went wrong.'});
+//                           } else {
+//                             res.json({success: true, message: 'Post liked.'});
+//                           }
+//                         });
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             })
+//           }
+//         }
+//       }
+//     )}
+// }
+
+
+// exports.dislikePost = (req,res)=>{
+//   if (!req.body.id) {
+//       res.json({ success: false, message: 'No id was provided'});
+//   } else {
+//       Post.findOne({ _id: req.body.id}, (err, post) => {
+//         if (err) {
+//           res.json({ success: false, message: 'Invalid post id'});
+//         } else {
+//           if (!post) {
+//             res.json({ success: false, message: 'That post was not found.'});
+//           } else {
+//             user.findOne({ _id: req.fetchedPosts.userId}, (err, user) => {
+//               if (err) {
+//                 res.json({ success: false, message: 'Something went wrong.'});
+//               } else {
+//                 if (!user) {
+//                   res.json({ success: false, message: 'Could not authenticate user'});
+//                 } else {
+//                   if (user.userId === post.createdPost) {
+//                     res.json({ success: false, message: 'Cannot dislike your own post.'});
+//                   } else {
+//                     if (post.dislikedBy.includes(user.userId)) {
+//                       res.json({ success: false, message: 'You already disliked this post,'});
+//                     } else {
+//                       if (post.likedBy.includes(user.userId)) {
+//                         post.likes--;
+//                         const arrayIndex = post.likedBy.indexOf(user.userId);
+//                         post.likedBy.splice(arrayIndex, 1);
+//                         post.dislikes++;
+//                         post.dislikedBy.push(user.userId);
+//                         post.save((err) => {
+//                           if (err) {
+//                             res.json({ success: false, message: 'Something went wrong.'});
+//                           } else {
+//                             res.json({success: true, message: 'Post disliked.'});
+//                           }
+//                         });
+//                       } else {
+//                         post.dislikes++;
+//                         post.dislikedBy.push(user.userId);
+//                         post.save((err) => {
+//                           if (err) {
+//                             res.json({ success: false, message: 'Something went wrong.'});
+//                           } else {
+//                             res.json({success: true, message: 'Post disliked.'});
+//                           }
+//                         });
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             })
+//           }
+//         }
+//       }
+//     )}
+// }

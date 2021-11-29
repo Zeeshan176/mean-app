@@ -18,6 +18,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   //   { title: "Third Post", content: "This is the third post's content" }
   // ];
   posts: Post[] = [];
+  numberOfLikes : number = 0;
+  clicked = false;
+  clicke = false;
   isLoading = false;
   totalPosts = 0;
   postsPerPage = 2;
@@ -51,6 +54,17 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
+  }
+  
+  likeButtonClick() {
+    if (this.clicke == false) {
+    this.numberOfLikes++;
+    this.clicked = false;
+  }}
+
+  dislikeButtonClick() {
+    this.numberOfLikes--;
+    this.clicke = false;
   }
 
   onChangedPage(pageData: PageEvent) {

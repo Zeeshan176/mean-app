@@ -1,13 +1,21 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
+<mat-accordion class="bg-img" multi="true" *ngIf="posts.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
       {{ post.title }}
     </mat-expansion-panel-header>
+    <!-- {{post.imagePath}} -->
     <div class="post-image">
       <img [src]="post.imagePath" [alt]="post.title">
     </div>
     <p>{{ post.content }}</p>
+    <mat-action-row  *ngIf="userIsAuthenticated">
+      <p class="col">{{numberOfLikes}}</p>
+      <button class="col btn-success" [disabled]="clicke" (click)="likeButtonClick(); clicke = true;"><span mat-button class="material-icons">thumb_up</span></button>
+      <button *ngIf="clicke" class="col btn btn-danger" [disabled]="clicked" (click)="dislikeButtonClick(); clicked = true;"><span class="material-icons">thumb_down</span></button>
+      <!-- <button><span class="material-icons">comment</span></button> -->
+      <!-- <button><span class="material-icons">share</span></button> -->
+    </mat-action-row>
     <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
       <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
